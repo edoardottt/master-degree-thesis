@@ -1,0 +1,20 @@
+# env
+.vscode/
+
+# pdf
+*.pdf
+
+#logs
+*.log
+
+# other
+*.swp
+*-eps-converted-to.pdf
+*.aux
+*.fdb_latexmk
+*.fls
+*.toc
+*.synctex.gz
+*.auto.dot
+*.out
+_minted-tesi
