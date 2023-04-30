@@ -7,6 +7,8 @@
   <a href="https://www.edoardoottavianelli.it/"><img src="https://github.com/edoardottt/images/blob/main/bachelor-degree-thesis/overleaf.svg" alt="pdf read"></a>
 </p>
 
+**The thesis work led to discovery of [CVE-2023-24279](https://nvd.nist.gov/vuln/detail/CVE-2023-24279) and [CVE-2023-30093](https://nvd.nist.gov/vuln/detail/CVE-2023-30093)**.
+
 See also [edoardottt/offensive-onos](https://github.com/edoardottt/offensive-onos) (part of research activity for Thesis work).
 
 Requirements: `latexmk`
