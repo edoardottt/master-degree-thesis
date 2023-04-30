@@ -331,13 +331,13 @@ These two applications could create problems related to the stability and reliab
 In order to use these access control mechanisms we need to specify a policy in the bundle specification file (needed to compile and install the application into ONOS). Here an example of a policy file for ONOS application:
 \begin{lstlisting}[language=XML]
 <feature name="onos-app-sdnip" version="1.0.0" description="SDN-IP peering application">
-  <type> ONOS application </type>
-  <role> non-admin </role>
-  <uses-permission onos:name="onos.permission.INTENT_WRITE"/>
-  <uses-permission onos:name="onos.permission.DEVICE_READ"/>
-  <uses-permission onos:name="onos.permission.TOPOLOGY_EVENT"/>
-  <uses-permission onos:name="onos.permission.PACKET_EVENT"/>
-  <bundle>mvn:org.onosproject/onos-app-sdnip/1.0.0</bundle>
+	<type> ONOS application </type>
+	<role> non-admin </role>
+	<uses-permission onos:name="onos.permission.INTENT_WRITE"/>
+	<uses-permission onos:name="onos.permission.DEVICE_READ"/>
+	<uses-permission onos:name="onos.permission.TOPOLOGY_EVENT"/>
+	<uses-permission onos:name="onos.permission.PACKET_EVENT"/>
+	<bundle>mvn:org.onosproject/onos-app-sdnip/1.0.0</bundle>
 </feature>
 \end{lstlisting}
 In line 1 the feature field is used to specify some general information about the bundle. Line 2 specifies the bundle type and this is important to understand what the bundle is describing (could be a provider or a service), in this case being an ONOS application only the Northbound API access will be allowed. In line 3 the role field specifies if the bundle can access administrative services (can be 'admin' or 'non-admin'). From lines 4 to 7 the policy specifies which permissions the bundle is requesting access to; it's possible to define granular permissions for each application specifying the permission identifier (a complete list of all the permission identifiers can be found on the ONOS official documentation) \cite{secmode-perms}. Since this is a very important file for the security mechanism provided by ONOS, it's recommended to not only sign the jar file but also this policy file (e.g. using the JDK’s jarsigner). ONOS can also restrict the installation and deployment of applications from untrusted sources.
@@ -1402,7 +1402,7 @@ This method is a private subroutine used in the previous function. It checks if 
 
 \clearpage
 
-\section{Authentication \& Logging}
+\section{Authentication and Logging}
 
 \subsection{Legacy APIs}
 %% - app activation without appkeystore
@@ -1652,8 +1652,8 @@ During the research activity, data mining and some statistical tools were used t
 %% - briefly explain what logistic regression is
 Logistic regression is a type of statistical model used for classification and prediction. It estimates the probability for an event to happen, so the result can be a discrete value (0 or 1, likely or unlikely to happen) or a continuous value between 0 and 1. There are three types of logistic regression: Binary Logistic Regression with only two possible outcomes, Multinomial Logistic Regression with three or more outcomes and Ordinal Logistic Regression with multiple outcomes where ordering matters. The model uses statistical methods to create a sigmoid function that correlates independent and dependent variables: over a certain probability amount (typically $\geq0.5$) the result is positive, otherwise negative. This model requires a considerable amount of data to be well trained and two datasets were used: one for training and another one to test the model. Some issues were encountered considering that the starting point is a file containing logs produced by the proposed solution for CAP detection: (a) the model cannot interpret text, but only numbers; (b) all the input entries must have the same data format, both for training and testing. These problems were addressed using this solution: the logs are parsed and translated into numbers using a one to one mapping from text to integers. Then, the input entries are all composed by fifty elements, both for training and testing datasets. The lines are composed by two parts separated by a space: the first part are fifty API calls (1 for getHost(), 2 for forward(), 3 for appendLocation() and 4 for removeLocation()) in sequence, while the second one represents the result (0 for no CAP attack, 1 for CAP attack). For example, the lines below shows two entries used for testing: in the first one there is no CAP attack, while in the second we can see a location related API calls followed by flow rules installation.
 \begin{lstlisting}[language=bash]
-11114444111111444411111144441111114444111111444411  0
-11141342141114134214111413421411141342141114134214  1
+11114444111111444411111144441111114444111111444411	0
+11141342141114134214111413421411141342141114134214	1
 \end{lstlisting}
 
 The following code snippet is the code used to get the data from datasets. It takes as input two parameters: the filename in which the data is stored and a positive integer representing the maximum entries to be considered. To simplify the job numpy arrays and methods were used. The function creates two arrays (X and Y) containing respectively the input entries (having dimension 50) and the outcome (0 or 1).
