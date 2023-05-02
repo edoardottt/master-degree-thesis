@@ -238,8 +238,9 @@ The idea behind this stack is really simple: there are five layers (physical, da
 
 A particular type of computer network is a Software Defined Network (SDN). In traditional networks, we have distributed devices (they can be emulated also in the same machine, but generally they are physically located in different places) implementing protocols and technologies they need to make the network works as intended. In order to have a working network each device must know some information to deliver packets to other nodes in the same network or other subnetworks. This requires nodes in the network actively or passively gather that information, for example we can talk about routing. Let's say we have several end hosts in the network connected using routers. Those routers only know they have to use a specific routing protocol (e.g. OSPF) to make those hosts communicate effectively. Each router must fill its routing table in order to understand for a packet having specific characteristics which route has to be chosen. This means each device in the network has a local view of the whole network: a router only knows about its neighbors and how to deliver a packet to the next device. Doing so can be highly inefficient, this is one of the main reasons why Software Defined Networking has been invented.
  
-Wikipedia defines Software Defined Networking \cite{sdn-wikipedia} as 
-\begin{quoting}[font=itshape, begintext={"}, endtext={"}]an approach to network management that enables dynamic, programmatically efficient network configuration in order to improve network performance and monitoring, making it more like cloud computing than traditional network management.
+Feamster et al. defines Software Defined Networking using these words \cite{sdn-definition}:
+\begin{quoting}[font=itshape, begintext={"}, endtext={"}]
+First, an SDN separates the control plane (which decides how to handle the traffic) from the data plane (which forwards traffic according to decisions that the control plane makes). Second, an SDN consolidates the control plane, so that a single software control program controls multiple data-plane elements. The SDN control plane exercises direct control over the state in the network’s data-plane elements (i.e., routers, switches, and other middleboxes) via a well-defined Application Programming Interface (API).
 \end{quoting}
 
 The main idea behind Software Defined Networking is to separate the concept of routing and forwarding. Routing is the act of determining which route has to be chosen for a packet having specific characteristics (source and destination addresses/networks or protocol-specific information), while forwarding is the concrete action of copying the entire packet from the ingress point to the egress point. A Software Defined Network is composed of multiple logical components: the Data Plane is the layer comprising the end hosts and the physical devices (e.g. switches); the Control Plane is the layer taking care of the routing process (let's say the brain, where the computation is centralized) and the Application Plane, where the software controlling and configuring the control plane is placed. As stated above, one main limitation of traditional networking is the limited view of the whole network, and so limited monitoring too. We are going to see some improvements brought by Software Defined Networks and main reasons of its usage.
@@ -2673,7 +2674,7 @@ To all my amazing friends who have accompanied me on this journey. The laughs an
 The most heartfelt thanks go to my family, and especially to my parents. 
 "We are like dwarfs on the shoulders of giants" said the French philosopher Bernard of Chartres, and that is exactly how I feel. 
 Theirs was not just help or support, they lifted me up on their shoulders and taught me to see the world with a different perspective.\\
-Every day in which I felt weak or inadequate, they reminded me to always look at the horizon, that even on the most horrible day the sun sets and we are given a new chance.\\
+Every day in which I felt weak and inadequate they reminded me to always look at the horizon, that even the sun of the most horrible day sets nevertheless and we will be given a new chance to shine again.\\
 You have been amazing, and always will be.\\
 
 \bigskip
@@ -2686,9 +2687,10 @@ Estote Semper Parati
 % ================================ BIBLIOGRAPHY =================================
 \begin{thebibliography}{9}
 
-\bibitem{sdn-wikipedia}
-  \textbf{Wikipedia | Software-defined networking}.\\
-  \href{https://en.wikipedia.org/wiki/Software-defined_networking}{https://en.wikipedia.org/wiki/Software-defined\_networking}\\
+\bibitem{sdn-definition}
+  \textbf{The Road to SDN: An Intellectual History of Programmable Networks}.\\
+  \href{https://www.cs.princeton.edu/courses/archive/fall13/cos597E/papers/sdnhistory.pdf}{https://www.cs.princeton.edu/courses/archive/fall13/cos597E/papers/sdnhistory.pdf}\\
+  2014, ACM SIGCOMM; Nick Feamster, Jennifer Rexford and Ellen Zegura
 
 \bibitem{opennetworking-org}
   \textbf{Open Networking Foundation}.\\
