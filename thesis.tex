@@ -450,7 +450,7 @@ Regarding the point (b) there are some examples of failed attempts in Section 4.
 %% - why defense mechanisms in previous section don't help
 In subsection 1.2 (Introduction to CAP attacks) we went through some security mechanisms provided by ONOS like Security-Mode ONOS. We saw also that this mode can help with the security posture of the whole architecture reducing the attack surface exposed to malicious applications. We've also understood that some actions can improve the overall security of the system, even though they are not provided by ONOS (like application and policy file signing). However, unfortunately, these methods are ineffective when it comes to Cross Application Poisoning attacks. We can see this attack methodology as a Security-Mode bypass or an effective way to mislead the security systems and make sure attackers don't get caught.
 
-Other security mechanisms could be implemented to improve the overall system security, but those won't be effective too. For example, any mechanism implementing Role-Based Access Control can be bypassed by these attacks (exactly like Security-Mode ONOS). Data shared using ONOS APIs can be kept confidential using TLS or any other cryptographically secure system, but this won't stop CAP attacks. Also signing all the trusted applications is not an effective security mechanism for CAP attacks: imagine we have a signed application from a trusted party. This means we trust the developers and the entity and processes that created the application. So we can assume they didn't implement a CAP attack in that application. But applications can expose data and endpoints in the network (private but even public), this means an attacker could have a way to first of all attack the trusted application, then perform a CAP attack. This induces a false sense of security because we trust the entity that developed the application. Certain SDN controllers implement application sandboxing to prevent applications to use resources that should not be accessed by them (like file system does in operating systems) and this seems to be an effective mechanism; the problem is the concept itself of Cross Application Poisoning attack: a malicious application could induce a legitimate application to perform forbidden action on the first one's behalf.
+Other security mechanisms could be implemented to improve the overall system security, but those won't be effective too. For example, any mechanism implementing Role-Based Access Control can be bypassed by these attacks (exactly like Security-Mode ONOS). Data shared using ONOS APIs can be kept confidential using TLS or any other cryptographically secure system, but this won't stop CAP attacks \cite{tlsapis}. Also signing all the trusted applications is not an effective security mechanism for CAP attacks: imagine we have a signed application from a trusted party. This means we trust the developers and the entity and processes that created the application. So we can assume they didn't implement a CAP attack in that application. But applications can expose data and endpoints in the network (private but even public), this means an attacker could have a way to first of all attack the trusted application, then perform a CAP attack. This induces a false sense of security because we trust the entity that developed the application. Certain SDN controllers implement application sandboxing to prevent applications to use resources that should not be accessed by them (like file system does in operating systems) and this seems to be an effective mechanism; the problem is the concept itself of Cross Application Poisoning attack: a malicious application could induce a legitimate application to perform forbidden action on the first one's behalf \cite{rosemary}.
 
 \medskip
 We're going to see some defense mechanisms explained in the literature, how they work and what are their limitations.
@@ -2718,6 +2718,16 @@ Estote Semper Parati
   \textbf{Cross-App Poisoning in Software-Defined Networking}.\\
   \href{https://dl.acm.org/doi/10.1145/3243734.3243759}{https://dl.acm.org/doi/10.1145/3243734.3243759}\\
   2018, ACM SIGSAC Conference; E. Ujcich et al.
+
+\bibitem{tlsapis}
+  \textbf{Securing the Software-Defined Network Control Layer}.\\
+  \href{https://www.ndss-symposium.org/wp-content/uploads/2017/09/10_3_2.pdf}{https://www.ndss-symposium.org/wp-content/uploads/2017/09/10\_3\_2.pdf}\\
+  2015, NDSS Symposium; P. Porras et al.
+
+\bibitem{rosemary}
+  \textbf{Rosemary: A Robust, Secure, and High-performance Network Operating System}.\\
+  \href{https://dl.acm.org/doi/10.1145/2660267.2660353}{https://dl.acm.org/doi/10.1145/2660267.2660353}\\
+  2014, CCS '14: Proceedings of the 2014 ACM SIGSAC Conference on Computer and Communications Security; S. Shin et al.
 
 \bibitem{virtual-cap-sdn}
   \textbf{Protecting Virtual Programmable Switches from Cross-App Poisoning (CAP) Attacks}.\\
