@@ -1,5 +1,5 @@
 
-pdf: thesis.tex
+thesis.pdf: thesis.tex
 	latexmk -pdf -shell-escape thesis.tex
 
 clean:
