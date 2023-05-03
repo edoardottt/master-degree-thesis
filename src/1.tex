@@ -317,16 +317,13 @@ The tests performed by the authors show that this approach works well and effect
 
 \subsection{vIFC}
 
-The paper "Protecting Virtual Programmable Switches from Cross-App Poisoning (CAP) Attacks" by Lamb et al. highlights some ProvSDN limitations and defines a model that tries to address those issues. This new solution is called vIFC with the v standing for virtual, we are going to see the limitations found by the authors.\cite{virtual-cap-sdn}
-
-The first limitation arises when the network uses virtual programmable switches. In such scenario a switch is a software deployed in a physical device and this implies some actions that were
+The paper "Protecting Virtual Programmable Switches from Cross-App Poisoning (CAP) Attacks" by Lamb et al. highlights some ProvSDN limitations and defines a model that tries to 
 \begin{wrapfigure}[17]{h}{0.55\textwidth}
 \caption{CAP with virtual switches interactions}
 \label{fig:vcap}
 \includegraphics[width=0.55\textwidth]{resources/Chapter-1/v-cap.png}
 \end{wrapfigure}
-not considered in the study that created ProvSDN. 
-There are multiple ways to implement virtual switches, one method is to virtualize multiple virtual switch images in a single device through P4 language (Hyper4 being one of the most famous example); another technique uses switch program composition (P4Visor being on the most famous example) merging the code of different switches in a single program; another solution, like P4VBox, divide the available resources and assign them to virtual switches. 
+address those issues. This new solution is called vIFC with the v standing for virtual, we are going to see the limitations found by the authors \cite{virtual-cap-sdn}. The first limitation arises when the network uses virtual programmable switches. In such scenario a switch is a software deployed in a physical device and this implies some actions that were not considered in the study that created ProvSDN. There are multiple ways to implement virtual switches, one method is to virtualize multiple virtual switch images in a single device through P4 language (Hyper4 being one of the most famous example); another technique uses switch program composition (P4Visor being on the most famous example) merging the code of different switches in a single program; another solution, like P4VBox, divide the available resources and assign them to virtual switches. 
 
 Figure 1.8 graphically shows what a Cross Application Poisoning attack could look like when programmable virtual switches are used. There are three applications used (as in the previous paper both ONOS applications and switches are considered apps) named a1, a2, a3 and three objects named o1, o2, o3. a1 starts the interaction writing something to the object o1, then the application a2 reads from the object o1. Here there is an "anomaly" not taken into consideration in the previous paper: a2 being virtualized in the same environment of a3 can communicate with a3 directly without using the ONOS APIs. Finally a3 writes into the object o3. All the interactions are legitimate since the applications use regular ONOS permissions to access APIs and the internal communication between virtualized switches. ProvSDN cannot detect such Cross Application Poisoning attacks because the internal communication is not tracked by the provenance graph, so it will see only the paths a1-o1-a2 and a3-o3 in which there is not present a CAP attack.
 \begin{figure}[h]
