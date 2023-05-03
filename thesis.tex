@@ -244,7 +244,7 @@ ONOS development started in 2014, the source code is available on GitHub platfor
 \centering
 \end{figure}
 
-In ONOS the term "service" is a vertical slice through the horizontal logical components of the figure 1.2. For example the Device service (or subsystem) is a vertical slice comprising applications, Northbound APIs, core components, Southbound APIs and Providers managing the devices in the network. The Software Defined Networking concept was presented talking also about the 'centralization' of the information, but in the figure we can read 'Distributed Core'. This is an important feature of ONOS: we can use multiple controllers in order to have a fault tolerant and high available environment. Even if this feature is really powerful, during this research activity only single controller environments have been taken into account. 
+In ONOS the term "service" is a vertical slice through the horizontal logical components of the figure 1.2. For example the Device service (or subsystem) is a vertical slice comprising applications, Northbound APIs, core components, Southbound APIs and Providers managing the devices in the network. The Software Defined Networking concept was presented talking also about the 'centralization' of the information, but in the figure we can read 'Distributed Core'. This is an important feature of ONOS: we can use multiple controllers in order to have a fault tolerant and highly available environment. Even if this feature is really powerful, during this research activity only single controller environments have been taken into account. 
 
 As stated in the subsection title this is just a gentle introduction to ONOS, its components and their purposes, for a more detailed study of the ONOS architecture and internals go to Section 2.1 (ONOS internals).  
 
@@ -420,7 +420,7 @@ Regarding the point (b) there are some examples of failed attempts in Section 4.
 %% - why defense mechanisms in previous section don't help
 In subsection 1.2 (Introduction to CAP attacks) we went through some security mechanisms provided by ONOS like Security-Mode ONOS. We saw also that this mode can help with the security posture of the whole architecture reducing the attack surface exposed to malicious applications. We've also understood that some actions can improve the overall security of the system, even though they are not provided by ONOS (like application and policy file signing). However, unfortunately, these methods are ineffective when it comes to Cross Application Poisoning attacks. We can see this attack methodology as a Security-Mode bypass or an effective way to mislead the security systems and make sure attackers don't get caught.
 
-Other security mechanisms could be implemented to improve the overall system security, but those won't be effective too. For example, any mechanism implementing Role-Based Access Control can be bypassed by these attacks (exactly like Security-Mode ONOS). Data shared using ONOS APIs can be kept confidential using TLS or any other cryptographically secure system, but this won't stop CAP attacks \cite{tlsapis}. Also signing all the trusted applications is not an effective security mechanism for CAP attacks: imagine we have a signed application from a trusted party. This means we trust the developers and the entity and processes that created the application. So we can assume they didn't implement a CAP attack in that application. But applications can expose data and endpoints in the network (private but even public), this means an attacker could have a way to first of all attack the trusted application, then perform a CAP attack. This induces a false sense of security because we trust the entity that developed the application. Certain SDN controllers implement application sandboxing to prevent applications to use resources that should not be accessed by them (like file system does in operating systems) and this seems to be an effective mechanism; the problem is the concept itself of Cross Application Poisoning attack: a malicious application could induce a legitimate application to perform forbidden action on the first one's behalf \cite{rosemary}.
+Other security mechanisms could be implemented to improve the overall system security, but those won't be effective too. For example, any mechanism implementing Role-Based Access Control can be bypassed by these attacks (exactly like Security-Mode ONOS) \cite{secmode}. Data shared using ONOS APIs can be kept confidential using TLS or any other cryptographically secure system, but this won't stop CAP attacks \cite{tlsapis}. Also signing all the trusted applications is not an effective security mechanism for CAP attacks: imagine we have a signed application from a trusted party. Even API abuse prevention is not deemed to be effective against CAP attacks \cite{aegis,dac}. This means we trust the developers and the entity and processes that created the application. So we can assume they didn't implement a CAP attack in that application. But applications can expose data and endpoints in the network (private but even public), this means an attacker could have a way to first of all attack the trusted application, then perform a CAP attack. This induces a false sense of security because we trust the entity that developed the application. Certain SDN controllers implement application sandboxing to prevent applications to use resources that should not be accessed by them (like file system does in operating systems) and this seems to be an effective mechanism; the problem is the concept itself of Cross Application Poisoning attack: a malicious application could induce a legitimate application to perform forbidden action on the first one's behalf \cite{rosemary}.
 
 \medskip
 We're going to see some defense mechanisms explained in the literature, how they work and what are their limitations.
@@ -2665,10 +2665,12 @@ Estote Semper Parati
 \bibitem{opennetworking-org}
   \textbf{Open Networking Foundation}.\\
   \href{https://opennetworking.org/}{https://opennetworking.org/}\\
+  Accessed May 2023
 
 \bibitem{github-onos}
   \textbf{GitHub | Open Network Operating System}.\\
   \href{https://github.com/opennetworkinglab/onos}{https://github.com/opennetworkinglab/onos}\\
+  Accessed May 2023
 
 \bibitem{sdn-security-survey}
   \textbf{SDN Security: A Survey}.\\
@@ -2683,17 +2685,33 @@ Estote Semper Parati
 \bibitem{secmode-perms}
   \textbf{ONOS Application Permissions}.\\
   \href{https://wiki.onosproject.org/display/ONOS/ONOS+Application+Permissions}{https://wiki.onosproject.org/display/ONOS/ONOS+Application+Permissions}\\
+  Accessed May 2023
 
 \bibitem{cap-sdn}
   \textbf{Cross-App Poisoning in Software-Defined Networking}.\\
   \href{https://dl.acm.org/doi/10.1145/3243734.3243759}{https://dl.acm.org/doi/10.1145/3243734.3243759}\\
   2018, ACM SIGSAC Conference; E. Ujcich et al.
 
+\bibitem{secmode}
+  \textbf{A Security-Mode for Carrier-Grade SDN Controllers}.\\
+  \href{https://dl.acm.org/doi/10.1145/3134600.3134603}{https://dl.acm.org/doi/10.1145/3134600.3134603}\\
+  2017, ACSAC: Annual Computer Security Applications Conference; C. Yoon et al.
+
 \bibitem{tlsapis}
   \textbf{Securing the Software-Defined Network Control Layer}.\\
   \href{https://www.ndss-symposium.org/wp-content/uploads/2017/09/10_3_2.pdf}{https://www.ndss-symposium.org/wp-content/uploads/2017/09/10\_3\_2.pdf}\\
   2015, NDSS Symposium; P. Porras et al.
 
+\bibitem{aegis}
+  \textbf{Enabling Dynamic Access Control for Controller Applications in Software-Defined Networks}.\\
+  \href{https://dl.acm.org/doi/pdf/10.1145/2914642.2914647}{https://dl.acm.org/doi/pdf/10.1145/2914642.2914647}\\
+  2016, SACMAT. ACM; H. Padekar et al.
+
+\bibitem{dac}
+  \textbf{Controller DAC: Securing SDN Controller with Dynamic Access Control}.\\
+  \href{https://ieeexplore.ieee.org/abstract/document/7997249}{https://ieeexplore.ieee.org/abstract/document/7997249}\\
+  2017, IEEE International Conference on Communications (ICC); Y. Tseng et al.
+  
 \bibitem{rosemary}
   \textbf{Rosemary: A Robust, Secure, and High-performance Network Operating System}.\\
   \href{https://dl.acm.org/doi/10.1145/2660267.2660353}{https://dl.acm.org/doi/10.1145/2660267.2660353}\\
@@ -2717,6 +2735,7 @@ Estote Semper Parati
 \bibitem{apidocs}
   \textbf{ONOS 2.7.0 API Documentation}.\\
   \href{https://api.onosproject.org/2.7.0/apidocs/}{https://api.onosproject.org/2.7.0/apidocs/}\\
+  Accessed May 2023
 
 \bibitem{secmodeslides}
   \textbf{Security-Mode ONOS}.\\
@@ -2726,10 +2745,12 @@ Estote Semper Parati
 \bibitem{mininetgh}
   \textbf{GitHub | Mininet}.\\
   \href{https://github.com/mininet/mininet}{https://github.com/mininet/mininet}\\
+  Accessed May 2023
 
 \bibitem{igraph-api}
   \textbf{python-igraph API reference}.\\
   \href{https://python.igraph.org/en/stable/api/igraph.Graph.html}{https://python.igraph.org/en/stable/api/igraph.Graph.html}\\
+  Accessed May 2023
 
 \bibitem{javareflection}
   \textbf{Oracle | Using Java Reflection}.\\
@@ -2739,31 +2760,37 @@ Estote Semper Parati
 \bibitem{CVE-2023-24279}
   \textbf{CVE-2023-24279 | NIST National Vulnerability Database}.\\
   \href{https://nvd.nist.gov/vuln/detail/CVE-2023-24279}{https://nvd.nist.gov/vuln/detail/CVE-2023-24279}\\
+  Accessed May 2023
 
 \bibitem{openapi}
   \textbf{Swagger | OpenAPI Specification}.\\
   \href{https://swagger.io/resources/open-api/}{https://swagger.io/resources/open-api/}\\
+  Accessed May 2023
 
 \bibitem{oauth}
   \textbf{OAuth | What is OAuth 2.0}.\\
   \href{https://auth0.com/intro-to-iam/what-is-oauth-2}{https://auth0.com/intro-to-iam/what-is-oauth-2}\\
+  Accessed May 2023
 
 \bibitem{angular}
   \textbf{Angular Documentation | Security}.\\
   \href{https://angular.io/guide/security}{https://angular.io/guide/security}\\
+  Accessed May 2023
 
 \bibitem{CVE-2017-1000078}
   \textbf{CVE-2017-1000078 | NIST National Vulnerability Database}.\\
   \href{https://nvd.nist.gov/vuln/detail/CVE-2017-1000078}{https://nvd.nist.gov/vuln/detail/CVE-2017-1000078}\\
+  Accessed May 2023
 
 \bibitem{dockeronos}
   \textbf{Docker Hub | onosproject/onos}.\\
   \href{https://hub.docker.com/r/onosproject/onos}{https://hub.docker.com/r/onosproject/onos}\\
+  Accessed May 2023
 
 \bibitem{sec-adv-onos}
   \textbf{ONOS Documentation | Security advisories}.\\
   \href{https://wiki.onosproject.org/display/ONOS/Security+advisories}{https://wiki.onosproject.org/display/ONOS/Security+advisories}\\
-
+  Accessed May 2023
 
 \end{thebibliography}
 
