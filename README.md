@@ -13,7 +13,7 @@ See also [edoardottt/offensive-onos](https://github.com/edoardottt/offensive-ono
 
 Requirements: `latexmk`
 
-Build the .pdf file
+Build the pdf file
 ```console
 make pdf
 ```
