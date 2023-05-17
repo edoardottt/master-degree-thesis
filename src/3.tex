@@ -652,7 +652,7 @@ def plot(g, count):
 
 \subsection{Find all CAP attack vectors in the graph}
 %% - idea
-Once we obtain the iGraph object representing all API interactions between applications and data stores, we can get all the Cross App Poisoning attack vectors present in the graph. Recall what a  Cross Application Poisoning attack vector is: it's defined as a path in the graph starting with an application, ending in a data store and having at least three steps. In our resulting graph we have only two paths starting with an application:
+Once we obtain the iGraph object representing all API interactions between applications and data stores, we can get all the Cross App Poisoning attack vectors present in the graph. Recall what a Cross Application Poisoning attack vector is: it's defined as a path in the graph starting with an application, ending in a data store and having at least three steps. In our resulting graph we have only two paths starting with an application:
 \begin{itemize}
     \item malhosttracking $->$ host $->$ fwd $->$ flow\_rule
     \item fwd $->$ flow\_rule
