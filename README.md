@@ -9,7 +9,10 @@
 
 **The thesis work led to discovery of [CVE-2023-24279](https://nvd.nist.gov/vuln/detail/CVE-2023-24279) and [CVE-2023-30093](https://nvd.nist.gov/vuln/detail/CVE-2023-30093)**.
 
-See also [edoardottt/offensive-onos](https://github.com/edoardottt/offensive-onos) (part of research activity for Thesis work).
+See also:
+
+ - the Paper "Cross App Poisoning Attacks Detection in Software Defined Networks" by Edoardo Ottavianelli and Professor Marco Polverini.
+ - [edoardottt/offensive-onos](https://github.com/edoardottt/offensive-onos) (part of research activity for Thesis work).
 
 Requirements: `latexmk`
 
