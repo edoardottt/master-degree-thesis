@@ -11,17 +11,19 @@
 
 See also:
 
- - the Paper "Cross App Poisoning Attacks Detection in Software Defined Networks" by Edoardo Ottavianelli and Professor Marco Polverini.
- - [edoardottt/offensive-onos](https://github.com/edoardottt/offensive-onos) (part of research activity for Thesis work).
+- the Paper "Cross App Poisoning Attacks Detection in Software Defined Networks" by Edoardo Ottavianelli and Professor Marco Polverini.
+- [edoardottt/offensive-onos](https://github.com/edoardottt/offensive-onos) (part of research activity for Thesis work).
 
 Requirements: `latexmk`
 
 Build the pdf file
+
 ```console
 make pdf
 ```
 
 Clean the folder from files generated while building
+
 ```console
 make clean
 ```
