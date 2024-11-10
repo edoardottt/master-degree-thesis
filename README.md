@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.edoardoottavianelli.it/"><img src="https://github.com/edoardottt/images/blob/main/bachelor-degree-thesis/made-with-latex.svg" alt="pdf read"></a>
-  <a href="https://www.edoardoottavianelli.it/"><img src="https://github.com/edoardottt/images/blob/main/bachelor-degree-thesis/overleaf.svg" alt="pdf read"></a>
+  <a href="https://www.edoardottt.com/"><img src="https://github.com/edoardottt/images/blob/main/bachelor-degree-thesis/made-with-latex.svg" alt="pdf read"></a>
+  <a href="https://www.edoardottt.com/"><img src="https://github.com/edoardottt/images/blob/main/bachelor-degree-thesis/overleaf.svg" alt="pdf read"></a>
 </p>
 
 **The thesis work led to discovery of [CVE-2023-24279](https://nvd.nist.gov/vuln/detail/CVE-2023-24279) and [CVE-2023-30093](https://nvd.nist.gov/vuln/detail/CVE-2023-30093)**.
@@ -30,4 +30,4 @@ make clean
 
 -------
 
-[edoardoottavianelli.it](https://www.edoardoottavianelli.it/) to contact me.
+[edoardottt.com](https://edoardottt.com/) to contact me.
